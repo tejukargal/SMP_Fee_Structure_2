@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMP College Fee Structure 2025-26</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4895ef;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4cc9f0;
+            --warning-color: #f72585;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            
+            /* Light mode variables */
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --border-color: #e9ecef;
+            --header-gradient-start: #4361ee;
+            --header-gradient-end: #3f37c9;
+            --header-text: #ffffff;
+            --table-hover: #f8f9fa;
+            --table-header-bg: #f8f9fa;
+            --table-header-text: #212529;
+            --table-border: #e9ecef;
+            --filter-label: #555;
+            --select-border: #ddd;
+            --footer-text: #6c757d;
+            --toggle-bg: #e9ecef;
+            
+            /* Added colorful variables for radio options */
+            --aided-color: #0070f3;
+            --aided-bg: #e6f7ff;
+            --unaided-color: #fa8c16;
+            --unaided-bg: #fff7e6;
+            --regular-color: #722ed1;
+            --regular-bg: #f9f0ff;
+            --snq-color: #52c41a;
+            --snq-bg: #f6ffed;
+            --lateral-color: #f5222d;
+            --lateral-bg: #fff2f0;
+            
+            /* Button colors */
+            --btn-reset-bg: #f1f3f5;
+            --btn-reset-color: #495057;
+            --btn-reset-hover-bg: #e9ecef;
+            --btn-active-bg: #3f37c9;
+            --btn-active-color: white;
+        }
+        
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --border-color: #333333;
+            --header-gradient-start: #2c3e50;
+            --header-gradient-end: #1a2639;
+            --header-text: #ffffff;
+            --table-hover: #2a2a2a;
+            --table-header-bg: #272727;
+            --table-header-text: #e0e0e0;
+            --table-border: #333333;
+            --filter-label: #aaaaaa;
+            --select-border: #333333;
+            --footer-text: #aaaaaa;
+            --toggle-bg: #333333;
+            
+            /* Dark mode adjustments for radio options */
+            --aided-bg: rgba(0, 112, 243, 0.2);
+            --aided-color: #4da3ff;
+            --unaided-bg: rgba(250, 140, 22, 0.2);
+            --unaided-color: #ffaa5c;
+            --regular-bg: rgba(114, 46, 209, 0.2);
+            --regular-color: #9c5eff;
+            --snq-bg: rgba(82, 196, 26, 0.2);
+            --snq-color: #7dde4e;
+            --lateral-bg: rgba(245, 34, 45, 0.2);
+            --lateral-color: #ff6b70;
+            
+            /* Button colors in dark mode */
+            --btn-reset-bg: #333333;
+            --btn-reset-color: #e0e0e0;
+            --btn-reset-hover-bg: #444444;
+            --btn-active-bg: #4da3ff;
+            --btn-active-color: #121212;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--header-gradient-start), var(--header-gradient-end));
+            color: var(--header-text);
+            padding: 24px 0;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 24px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header p {
+            text-align: center;
+            opacity: 0.9;
+            margin-top: 8px;
+        }
+        
+        .filters-container {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s ease;
+        }
+        
+        /* Section grouping styles */
+        .course-section {
+            margin-bottom: 24px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .section-header {
+            background: linear-gradient(90deg, var(--header-gradient-start), var(--header-gradient-end));
+            color: white;
+            padding: 12px 16px;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-header-aided {
+            background: linear-gradient(90deg, #0070f3, #66b3ff);
+        }
+        
+        .section-header-unaided {
+            background: linear-gradient(90deg, #fa8c16, #ffc069);
+        }
+        
+        .section-count {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        .section-table-container {
+            background: var(--card-bg);
+            overflow-x: auto;
+        }
+        
+        /* Dark mode toggle */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 16px;
+        }
+        
+        .theme-switch {
+            display: inline-block;
+            position: relative;
+            width: 60px;
+            height: 28px;
+        }
+        
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--toggle-bg);
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(32px);
+        }
+        
+        .toggle-label {
+            margin-right: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+        
+        /* Updated filters layout */
+        .filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .filter-group:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .filter-group-course {
+            border-top: 4px solid var(--aided-color);
+        }
+        
+        .filter-group-year {
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        .filter-group-type {
+            border-top: 4px solid var(--regular-color);
+        }
+        
+        .filter-group label {
+            font-size: 16px; /* Increased font size */
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-color);
+            text-align: center;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        /* Enhanced radio button styles */
+        .checkbox-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .checkbox-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .checkbox-item label {
+            display: flex;
+            align-items: center;
+            padding: 10px 16px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 15px; /* Increased font size */
+            font-weight: 500;
+            width: 100%;
+            transition: all 0.2s ease;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            margin: 0;
+            color: var(--text-color);
+        }
+        
+        .checkbox-item label:before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            margin-right: 10px;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+        
+        .checkbox-item input[type="radio"]:checked + label:before {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: inset 0 0 0 4px var(--card-bg);
+        }
+        
+        /* Apply colorful styles to radio buttons */
+        .checkbox-item input[id="courseAll"]:checked + label,
+        .checkbox-item input[id="yearAll"]:checked + label,
+        .checkbox-item input[id="typeAll"]:checked + label {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .checkbox-item input[id="courseAided"]:checked + label {
+            background-color: var(--aided-bg);
+            color: var(--aided-color);
+            border-color: var(--aided-color);
+        }
+        
+        .checkbox-item input[id="courseUnaided"]:checked + label {
+            background-color: var(--unaided-bg);
+            color: var(--unaided-color);
+            border-color: var(--unaided-color);
+        }
+        
+        .checkbox-item input[id="year1st"]:checked + label,
+        .checkbox-item input[id="year2nd"]:checked + label,
+        .checkbox-item input[id="year3rd"]:checked + label {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        
+        .checkbox-item input[id="typeRegular"]:checked + label {
+            background-color: var(--regular-bg);
+            color: var(--regular-color);
+            border-color: var(--regular-color);
+        }
+        
+        .checkbox-item input[id="typeSnq"]:checked + label {
+            background-color: var(--snq-bg);
+            color: var(--snq-color);
+            border-color: var(--snq-color);
+        }
+        
+        .checkbox-item input[id="typeLateral"]:checked + label {
+            background-color: var(--lateral-bg);
+            color: var(--lateral-color);
+            border-color: var(--lateral-color);
+        }
+        
+        /* Improved button styles */
+        .button-row {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 1;
+            max-width: 200px;
+        }
+        
+        button svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .btn-reset {
+            background-color: var(--btn-reset-bg);
+            color: var(--btn-reset-color);
+        }
+        
+        .btn-reset:hover {
+            background-color: var(--btn-reset-hover-bg);
+            transform: translateY(-2px);
+        }
+        
+        .btn-display {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-display:hover:not(:disabled) {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-display:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .btn-pdf {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-pdf:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-display, .btn-reset, .btn-pdf {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-display:not(:disabled):active, .btn-reset:active, .btn-pdf:active {
+            transform: translateY(2px);
+        }
+        
+        /* Button ripple effect */
+        .btn-ripple {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* Button animation */
+        .btn-animate {
+            animation: buttonPulse 0.4s ease-out;
+        }
+        
+        @keyframes buttonPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 24px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 15px;
+        }
+        
+        th {
+            background-color: var(--table-header-bg);
+            font-weight: 600;
+            text-align: left;
+            padding: 16px;
+            border-bottom: 2px solid var(--table-border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            color: var(--table-header-text);
+        }
+        
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--table-border);
+        }
+        
+        /* Zebra striping for better section visibility */
+        tr:nth-child(odd) {
+            background-color: var(--card-bg);
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--table-hover);
+        }
+        
+        /* Section separator - add extra space between different course types */
+        tr.section-separator td {
+            height: 20px;
+            background-color: var(--bg-color);
+            border-top: 2px dashed var(--border-color);
+            border-bottom: 2px dashed var(--border-color);
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover {
+            background-color: var(--accent-color) !important;
+            background-opacity: 0.1;
+            transition: background-color 0.2s ease;
+        }
+        
+        [data-theme="dark"] tr:hover {
+            background-color: rgba(72, 149, 239, 0.2) !important;
+        }
+        
+        .fee-cell {
+            font-family: 'Courier New', monospace;
+            font-weight: 700; /* Made bolder */
+            font-size: 16px; /* Increased size */
+            letter-spacing: 0.5px; /* Better readability */
+        }
+        
+        .total-cell {
+            font-weight: 800; /* Extra bold */
+            color: var(--primary-color);
+            font-size: 16px; /* Increased size */
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 24px 0;
+            font-size: 14px;
+            color: var(--footer-text);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700; /* Made bolder */
+            text-transform: uppercase;
+        }
+        
+        /* Light and Dark mode badge styles */
+        .badge-aided {
+            background-color: var(--aided-bg);
+            color: var(--aided-color);
+        }
+        
+        .badge-unaided {
+            background-color: var(--unaided-bg);
+            color: var(--unaided-color);
+        }
+        
+        .badge-snq {
+            background-color: var(--snq-bg);
+            color: var(--snq-color);
+        }
+        
+        .badge-regular {
+            background-color: var(--regular-bg);
+            color: var(--regular-color);
+        }
+        
+        .badge-lateral {
+            background-color: var(--lateral-bg);
+            color: var(--lateral-color);
+        }
+        
+        .no-results {
+            padding: 40px;
+            text-align: center;
+            color: var(--footer-text);
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Improved responsiveness */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 12px;
+            }
+            
+            .header {
+                padding: 20px 0;
+            }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+            
+            .checkbox-container {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            button {
+                padding: 10px 16px;
+                font-size: 14px;
+                max-width: none;
+            }
+            
+            th, td {
+                padding: 12px;
+            }
+            
+            .theme-switch-wrapper {
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+   
