@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMP College Fee Structure 2025-26</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4895ef;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4cc9f0;
+            --warning-color: #f72585;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            
+            /* Light mode variables */
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --border-color: #e9ecef;
+            --header-gradient-start: #4361ee;
+            --header-gradient-end: #3f37c9;
+            --header-text: #ffffff;
+            --table-hover: #f8f9fa;
+            --table-header-bg: #f8f9fa;
+            --table-header-text: #212529;
+            --table-border: #e9ecef;
+            --filter-label: #555;
+            --select-border: #ddd;
+            --footer-text: #6c757d;
+            --toggle-bg: #e9ecef;
+            
+            /* Added colorful variables for radio options */
+            --aided-color: #0070f3;
+            --aided-bg: #e6f7ff;
+            --unaided-color: #fa8c16;
+            --unaided-bg: #fff7e6;
+            --regular-color: #722ed1;
+            --regular-bg: #f9f0ff;
+            --snq-color: #52c41a;
+            --snq-bg: #f6ffed;
+            --lateral-color: #f5222d;
+            --lateral-bg: #fff2f0;
+            
+            /* Button colors */
+            --btn-reset-bg: #f1f3f5;
+            --btn-reset-color: #495057;
+            --btn-reset-hover-bg: #e9ecef;
+            --btn-active-bg: #3f37c9;
+            --btn-active-color: white;
+        }
+        
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --border-color: #333333;
+            --header-gradient-start: #2c3e50;
+            --header-gradient-end: #1a2639;
+            --header-text: #ffffff;
+            --table-hover: #2a2a2a;
+            --table-header-bg: #272727;
+            --table-header-text: #e0e0e0;
+            --table-border: #333333;
+            --filter-label: #aaaaaa;
+            --select-border: #333333;
+            --footer-text: #aaaaaa;
+            --toggle-bg: #333333;
+            
+            /* Dark mode adjustments for radio options */
+            --aided-bg: rgba(0, 112, 243, 0.2);
+            --aided-color: #4da3ff;
+            --unaided-bg: rgba(250, 140, 22, 0.2);
+            --unaided-color: #ffaa5c;
+            --regular-bg: rgba(114, 46, 209, 0.2);
+            --regular-color: #9c5eff;
+            --snq-bg: rgba(82, 196, 26, 0.2);
+            --snq-color: #7dde4e;
+            --lateral-bg: rgba(245, 34, 45, 0.2);
+            --lateral-color: #ff6b70;
+            
+            /* Button colors in dark mode */
+            --btn-reset-bg: #333333;
+            --btn-reset-color: #e0e0e0;
+            --btn-reset-hover-bg: #444444;
+            --btn-active-bg: #4da3ff;
+            --btn-active-color: #121212;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--header-gradient-start), var(--header-gradient-end));
+            color: var(--header-text);
+            padding: 24px 0;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 24px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header p {
+            text-align: center;
+            opacity: 0.9;
+            margin-top: 8px;
+        }
+        
+        .filters-container {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s ease;
+        }
+        
+        /* Section grouping styles */
+        .course-section {
+            margin-bottom: 24px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .section-header {
+            background: linear-gradient(90deg, var(--header-gradient-start), var(--header-gradient-end));
+            color: white;
+            padding: 12px 16px;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-header-aided {
+            background: linear-gradient(90deg, #0070f3, #66b3ff);
+        }
+        
+        .section-header-unaided {
+            background: linear-gradient(90deg, #fa8c16, #ffc069);
+        }
+        
+        .section-count {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        .section-table-container {
+            background: var(--card-bg);
+            overflow-x: auto;
+        }
+        
+        /* Dark mode toggle */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 16px;
+        }
+        
+        .theme-switch {
+            display: inline-block;
+            position: relative;
+            width: 60px;
+            height: 28px;
+        }
+        
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--toggle-bg);
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(32px);
+        }
+        
+        .toggle-label {
+            margin-right: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+        
+        /* Updated filters layout */
+        .filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .filter-group:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .filter-group-course {
+            border-top: 4px solid var(--aided-color);
+        }
+        
+        .filter-group-year {
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        .filter-group-type {
+            border-top: 4px solid var(--regular-color);
+        }
+        
+        .filter-group label {
+            font-size: 16px; /* Increased font size */
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-color);
+            text-align: center;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        /* Enhanced radio button styles */
+        .checkbox-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .checkbox-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .checkbox-item label {
+            display: flex;
+            align-items: center;
+            padding: 10px 16px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 15px; /* Increased font size */
+            font-weight: 500;
+            width: 100%;
+            transition: all 0.2s ease;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            margin: 0;
+            color: var(--text-color);
+        }
+        
+        .checkbox-item label:before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            margin-right: 10px;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+        
+        .checkbox-item input[type="radio"]:checked + label:before {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: inset 0 0 0 4px var(--card-bg);
+        }
+        
+        /* Apply colorful styles to radio buttons */
+        .checkbox-item input[id="courseAll"]:checked + label,
+        .checkbox-item input[id="yearAll"]:checked + label,
+        .checkbox-item input[id="typeAll"]:checked + label {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .checkbox-item input[id="courseAided"]:checked + label {
+            background-color: var(--aided-bg);
+            color: var(--aided-color);
+            border-color: var(--aided-color);
+        }
+        
+        .checkbox-item input[id="courseUnaided"]:checked + label {
+            background-color: var(--unaided-bg);
+            color: var(--unaided-color);
+            border-color: var(--unaided-color);
+        }
+        
+        .checkbox-item input[id="year1st"]:checked + label,
+        .checkbox-item input[id="year2nd"]:checked + label,
+        .checkbox-item input[id="year3rd"]:checked + label {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        
+        .checkbox-item input[id="typeRegular"]:checked + label {
+            background-color: var(--regular-bg);
+            color: var(--regular-color);
+            border-color: var(--regular-color);
+        }
+        
+        .checkbox-item input[id="typeSnq"]:checked + label {
+            background-color: var(--snq-bg);
+            color: var(--snq-color);
+            border-color: var(--snq-color);
+        }
+        
+        .checkbox-item input[id="typeLateral"]:checked + label {
+            background-color: var(--lateral-bg);
+            color: var(--lateral-color);
+            border-color: var(--lateral-color);
+        }
+        
+        /* Improved button styles */
+        .button-row {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 1;
+            max-width: 200px;
+        }
+        
+        button svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .btn-reset {
+            background-color: var(--btn-reset-bg);
+            color: var(--btn-reset-color);
+        }
+        
+        .btn-reset:hover {
+            background-color: var(--btn-reset-hover-bg);
+            transform: translateY(-2px);
+        }
+        
+        .btn-display {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-display:hover:not(:disabled) {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-display:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .btn-pdf {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-pdf:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-display, .btn-reset, .btn-pdf {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-display:not(:disabled):active, .btn-reset:active, .btn-pdf:active {
+            transform: translateY(2px);
+        }
+        
+        /* Button ripple effect */
+        .btn-ripple {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* Button animation */
+        .btn-animate {
+            animation: buttonPulse 0.4s ease-out;
+        }
+        
+        @keyframes buttonPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 24px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 15px;
+        }
+        
+        th {
+            background-color: var(--table-header-bg);
+            font-weight: 600;
+            text-align: left;
+            padding: 16px;
+            border-bottom: 2px solid var(--table-border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            color: var(--table-header-text);
+        }
+        
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--table-border);
+        }
+        
+        /* Zebra striping for better section visibility */
+        tr:nth-child(odd) {
+            background-color: var(--card-bg);
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--table-hover);
+        }
+        
+        /* Section separator - add extra space between different course types */
+        tr.section-separator td {
+            height: 20px;
+            background-color: var(--bg-color);
+            border-top: 2px dashed var(--border-color);
+            border-bottom: 2px dashed var(--border-color);
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover {
+            background-color: var(--accent-color) !important;
+            background-opacity: 0.1;
+            transition: background-color 0.2s ease;
+        }
+        
+        [data-theme="dark"] tr:hover {
+            background-color: rgba(72, 149, 239, 0.2) !important;
+        }
+        
+        .fee-cell {
+            font-family: 'Courier New', monospace;
+            font-weight: 700; /* Made bolder */
+            font-size: 16px; /* Increased size */
+            letter-spacing: 0.5px; /* Better readability */
+        }
+        
+        .total-cell {
+            font-weight: 800; /* Extra bold */
+            color: var(--primary-color);
+            font-size: 16px; /* Increased size */
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 24px 0;
+            font-size: 14px;
+            color: var(--footer-text);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700; /* Made bolder */
+            text-transform: uppercase;
+        }
+        
+        /* Light and Dark mode badge styles */
+        .badge-aided {
+            background-color: var(--aided-bg);
+            color: var(--aided-color);
+        }
+        
+        .badge-unaided {
+            background-color: var(--unaided-bg);
+            color: var(--unaided-color);
+        }
+        
+        .badge-snq {
+            background-color: var(--snq-bg);
+            color: var(--snq-color);
+        }
+        
+        .badge-regular {
+            background-color: var(--regular-bg);
+            color: var(--regular-color);
+        }
+        
+        .badge-lateral {
+            background-color: var(--lateral-bg);
+            color: var(--lateral-color);
+        }
+        
+        .no-results {
+            padding: 40px;
+            text-align: center;
+            color: var(--footer-text);
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Improved responsiveness */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 12px;
+            }
+            
+            .header {
+                padding: 20px 0;
+            }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+            
+            .checkbox-container {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            button {
+                padding: 10px 16px;
+                font-size: 14px;
+                max-width: none;
+            }
+            
+            th, td {
+                padding: 12px;
+            }
+            
+            .theme-switch-wrapper {
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            
+            .filters {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-group {
+                margin-bottom: 8px;
+            }
+            
+            .filter-group-course,
+            .filter-group-year,
+            .filter-group-type {
+                border-top-width: 6px;
+            }
+        }
+        
+        /* Responsive table handling */
+        @media screen and (max-width: 600px) {
+            table {
+                display: block;
+            }
+            
+            thead, tbody, th, td, tr {
+                display: block;
+            }
+            
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            
+            tr {
+                border: 1px solid var(--border-color);
+                margin-bottom: 16px;
+                border-radius: var(--border-radius);
+                overflow: hidden;
+            }
+            
+            td {
+                border: none !important;
+                border-bottom: 1px solid var(--border-color) !important;
+                position: relative;
+                padding-left: 50% !important;
+                display: flex;
+                align-items: center;
+                min-height: 44px;
+                text-align: right;
+            }
+            
+            td:last-child {
+                border-bottom: none !important;
+            }
+            
+            td:before {
+                position: absolute;
+                left: 12px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                font-weight: 600;
+                content: attr(data-label);
+                text-align: left;
+            }
+            
+            /* Make sections stack properly on mobile */
+            .course-section {
+                margin-bottom: 20px;
+            }
+            
+            .section-table-container {
+                border-radius: 0;
+            }
+            
+            /* Improved button row on mobile */
+            .button-row {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            button {
+                flex: 1 1 100%;
+                margin-bottom: 8px;
+            }
+        }
+        
+        /* Animation for selection changes */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="theme-switch-wrapper">
+            <span class="toggle-label">Dark Mode</span>
+            <label class="theme-switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+        
+        <div class="header">
+            <h1>SMP College Fee Structure</h1>
+            <p>Academic Year 2025-26</p>
+        </div>
+        
+        <div class="filters-container">
+            <div class="filters">
+                <div class="filter-group filter-group-course">
+                    <label>Course Type</label>
+                    <div class="checkbox-container">
+                        <div class="checkbox-item">
+                            <input type="radio" id="courseAll" name="courseType" value="all">
+                            <label for="courseAll">All Courses</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="courseAided" name="courseType" value="aided">
+                            <label for="courseAided">Aided</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="courseUnaided" name="courseType" value="unaided">
+                            <label for="courseUnaided">Unaided</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-group filter-group-year">
+                    <label>Admission Year</label>
+                    <div class="checkbox-container">
+                        <div class="checkbox-item">
+                            <input type="radio" id="yearAll" name="admissionYear" value="all">
+                            <label for="yearAll">All Years</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="year1st" name="admissionYear" value="1st">
+                            <label for="year1st">1st Year</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="year2nd" name="admissionYear" value="2nd">
+                            <label for="year2nd">2nd Year</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="year3rd" name="admissionYear" value="3rd">
+                            <label for="year3rd">3rd Year</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-group filter-group-type">
+                    <label>Admission Type</label>
+                    <div class="checkbox-container">
+                        <div class="checkbox-item">
+                            <input type="radio" id="typeAll" name="admissionType" value="all">
+                            <label for="typeAll">All Types</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="typeRegular" name="admissionType" value="regular">
+                            <label for="typeRegular">Regular</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="typeSnq" name="admissionType" value="snq">
+                            <label for="typeSnq">SNQ</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="typeLateral" name="admissionType" value="lateral">
+                            <label for="typeLateral">Lateral</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="button-row">
+                <button class="btn-display" id="displayButton" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                    Show Results
+                </button>
+                
+                <button class="btn-reset" id="resetButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                        <path d="M3 3v5h5"></path>
+                        <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path>
+                        <path d="M16 21h5v-5"></path>
+                    </svg>
+                    Reset
+                </button>
+                
+                <button class="btn-pdf" id="savePdfButton" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="12" y1="18" x2="12" y2="12"></line>
+                        <line x1="9" y1="15" x2="15" y2="15"></line>
+                    </svg>
+                    Save as PDF
+                </button>
+            </div>
+        </div>
+        
+        <div class="table-container" id="tableContainer" style="display: none;">
+            <table id="feeTable">
+                <thead>
+                    <tr>
+                        <th>Course Type</th>
+                        <th>Year</th>
+                        <th>Admission Type</th>
+                        <th>Tuition Fee</th>
+                        <th>Management Fee</th>
+                        <th>Other Fees</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Table rows will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- New sectioned layout will go here -->
+        <div id="sectionsContainer"></div>
+        
+        <div id="noResults" class="no-results" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+            </svg>
+            <p>No results found for the selected filters. Please try different criteria.</p>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 SMP College | Developed by Teju</p>
+        </div>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            
+            // Check for saved theme preference or respect OS preference
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const savedTheme = localStorage.getItem('theme');
+            
+            // Apply theme based on saved preference or OS preference
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.checked = true;
+            }
+            
+            // Theme toggle event listener
+            themeToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            
+            // Initialize form validation
+            initFormValidation();
+        });
+        
+        // Fee data - optimized to be more maintainable
+        const feeData = [
+            // 2025-26 data
+            {year: '2025-26', courseType: 'Aided', admissionYear: '1st', admissionType: 'Regular', tuitionFee: 5618, managementFee: 5000, otherFees: 1370},
+            {year: '2025-26', courseType: 'Aided', admissionYear: '1st', admissionType: 'SNQ', tuitionFee: 0, managementFee: 5000, otherFees: 1370},
+            {year: '2025-26', courseType: 'Aided', admissionYear: '2nd', admissionType: 'Regular', tuitionFee: 5618, managementFee: 6000, otherFees: 1220},
+            {year: '2025-26', courseType: 'Aided', admissionYear: '2nd', admissionType: 'Lateral', tuitionFee: 5618, managementFee: 10000, otherFees: 1370},
+            {year: '2025-26', courseType: 'Aided', admissionYear: '2nd', admissionType: 'SNQ', tuitionFee: 0, managementFee: 6000, otherFees: 1220},
+            {year: '2025-26', courseType: 'Aided', admissionYear: '3rd', admissionType: 'Regular', tuitionFee: 5618, managementFee: 6000, otherFees: 1220},
+            {year: '2025-26', courseType: 'Aided', admissionYear: '3rd', admissionType: 'Lateral', tuitionFee: 5618, managementFee: 6000, otherFees: 1220},
+            {year: '2025-26', courseType: 'Aided', admissionYear: '3rd', admissionType: 'SNQ', tuitionFee: 0, managementFee: 6000, otherFees: 1220},
+            {year: '2025-26', courseType: 'Unaided', admissionYear: '1st', admissionType: 'Regular', tuitionFee: 12075, managementFee: 5000, otherFees: 1370},
+            {year: '2025-26', courseType: 'Unaided', admissionYear: '1st', admissionType: 'SNQ', tuitionFee: 0, managementFee: 5000, otherFees: 1370},
+            {year: '2025-26', courseType: 'Unaided', admissionYear: '2nd', admissionType: 'Regular', tuitionFee: 12075, managementFee: 6000, otherFees: 1220},
+            {year: '2025-26', courseType: 'Unaided', admissionYear: '2nd', admissionType: 'Lateral', tuitionFee: 12075, managementFee: 10000, otherFees: 1370},
+            {year: '2025-26', courseType: 'Unaided', admissionYear: '2nd', admissionType: 'SNQ', tuitionFee: 0, managementFee: 6000, otherFees: 1220},
+            {year: '2025-26', courseType: 'Unaided', admissionYear: '3rd', admissionType: 'Regular', tuitionFee: 12075, managementFee: 6000, otherFees: 1220},
+            {year: '2025-26', courseType: 'Unaided', admissionYear: '3rd', admissionType: 'Lateral', tuitionFee: 12075, managementFee: 6000, otherFees: 1220},
+            {year: '2025-26', courseType: 'Unaided', admissionYear: '3rd', admissionType: 'SNQ', tuitionFee: 0, managementFee: 6000, otherFees: 1220}
+        ];
+
+        // DOM elements
+        const courseRadios = document.querySelectorAll('input[name="courseType"]');
+        const yearRadios = document.querySelectorAll('input[name="admissionYear"]');
+        const typeRadios = document.querySelectorAll('input[name="admissionType"]');
+        const resetButton = document.getElementById('resetButton');
+        const displayButton = document.getElementById('displayButton');
+        const savePdfButton = document.getElementById('savePdfButton');
+        const sectionsContainer = document.getElementById('sectionsContainer');
+        const noResultsMessage = document.getElementById('noResults');
+        const filtersContainer = document.querySelector('.filters-container');
+
+        // Function to format currency
+        function formatCurrency(amount) {
+            return '₹' + amount.toLocaleString('en-IN');
+        }
+        
+        // Function to get selected radio value
+        function getSelectedValue(radios) {
+            for (let radio of radios) {
+                if (radio.checked) {
+                    return radio.value;
+                }
+            }
+            return "";
+        }
+        
+        // Function to validate form and update UI accordingly
+        function validateForm() {
+            const courseValue = getSelectedValue(courseRadios);
+            const yearValue = getSelectedValue(yearRadios);
+            const typeValue = getSelectedValue(typeRadios);
+            
+            let isValid = courseValue && yearValue && typeValue;
+            
+            // Enable/disable display button
+            displayButton.disabled = !isValid;
+            
+            // Update button appearance based on validation
+            if (isValid) {
+                displayButton.classList.add('btn-active');
+            } else {
+                displayButton.classList.remove('btn-active');
+            }
+            
+            return isValid;
+        }
+        
+        // Initialize form validation
+        function initFormValidation() {
+            // Hide sections container initially
+            sectionsContainer.style.display = 'none';
+            document.getElementById('tableContainer').style.display = 'none';
+            savePdfButton.style.display = 'none';
+            
+            // Add event listeners to radio buttons
+            [...courseRadios, ...yearRadios, ...typeRadios].forEach(radio => {
+                // Add event listeners to radio buttons
+                radio.addEventListener('change', () => {
+                    validateForm();
+                    // Add visual feedback when option is selected (just to the label)
+                    radio.parentNode.querySelector('label').classList.add('pulse');
+                    setTimeout(() => {
+                        radio.parentNode.querySelector('label').classList.remove('pulse');
+                    }, 300);
+                });
+            });
+            
+            // Display button event listener
+            displayButton.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                ripple.classList.add('btn-ripple');
+                
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                
+                this.appendChild(ripple);
+                
+                // Add animation to button only
+                this.classList.add('btn-animate');
+                
+                // Remove ripple and animation after they complete
+                setTimeout(() => {
+                    ripple.remove();
+                    this.classList.remove('btn-animate');
+                }, 600);
+                
+                // Display results if form is valid
+                if (validateForm()) {
+                    // Show results
+                    populateTable();
+                    
+                    // Show PDF button
+                    savePdfButton.style.display = 'flex';
+                    
+                    // Scroll to results with smooth animation
+                    setTimeout(() => {
+                        sectionsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 200);
+                }
+            });
+            
+            // Reset button
+            resetButton.addEventListener('click', () => {
+                // Add animation effect to reset button only
+                resetButton.classList.add('btn-animate');
+                setTimeout(() => {
+                    resetButton.classList.remove('btn-animate');
+                }, 400);
+                
+                // Uncheck all radio buttons
+                courseRadios.forEach(radio => {
+                    radio.checked = false;
+                });
+                
+                yearRadios.forEach(radio => {
+                    radio.checked = false;
+                });
+                
+                typeRadios.forEach(radio => {
+                    radio.checked = false;
+                });
+                
+                // Disable buttons
+                displayButton.disabled = true;
+                
+                // Hide results and PDF button
+                sectionsContainer.style.display = 'none';
+                savePdfButton.style.display = 'none';
+                noResultsMessage.style.display = 'none';
+                
+                // Scroll back to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            savePdfButton.addEventListener('click', function() {
+                // Add animation to PDF button only
+                this.classList.add('btn-animate');
+                setTimeout(() => {
+                    this.classList.remove('btn-animate');
+                }, 400);
+                
+                generatePDF();
+            });
+        }
+
+        // Function to populate table based on filters
+        function populateTable() {
+            const courseValue = getSelectedValue(courseRadios);
+            const admissionYearValue = getSelectedValue(yearRadios);
+            const admissionTypeValue = getSelectedValue(typeRadios);
+            
+            // Filter data
+            const filteredData = feeData.filter(item => {
+                const courseMatch = courseValue === 'all' || 
+                    (courseValue === 'aided' && item.courseType === 'Aided') ||
+                    (courseValue === 'unaided' && item.courseType === 'Unaided');
+                
+                const yearMatch = admissionYearValue === 'all' || 
+                    item.admissionYear === admissionYearValue;
+                
+                const typeMatch = admissionTypeValue === 'all' || 
+                    item.admissionType.toLowerCase() === admissionTypeValue;
+                
+                return courseMatch && yearMatch && typeMatch;
+            });
+            
+            // Show/hide no results message
+            if (filteredData.length === 0) {
+                noResultsMessage.style.display = 'block';
+                sectionsContainer.style.display = 'none';
+                savePdfButton.style.display = 'none';
+                return;
+            } else {
+                noResultsMessage.style.display = 'none';
+                document.getElementById('tableContainer').style.display = 'none'; // Hide the original table
+            }
+            
+            // Group the data by course type
+            const courseGroups = {};
+            filteredData.forEach(item => {
+                if (!courseGroups[item.courseType]) {
+                    courseGroups[item.courseType] = [];
+                }
+                courseGroups[item.courseType].push(item);
+            });
+            
+            // Clear the container
+            sectionsContainer.innerHTML = '';
+            
+            // Create a section for each course type
+            Object.keys(courseGroups).forEach(courseType => {
+                const items = courseGroups[courseType];
+                
+                // Create section container
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'course-section';
+                
+                // Create section header
+                const headerDiv = document.createElement('div');
+                headerDiv.className = `section-header section-header-${courseType.toLowerCase()}`;
+                headerDiv.innerHTML = `
+                    <span>${courseType} Courses ${courseType === 'Aided' ? '(CE, ME, EC, CS)' : '(EE)'}</span>
+                    <span class="section-count">${items.length} entries</span>
+                `;
+                
+                // Create table container
+                const tableContainerDiv = document.createElement('div');
+                tableContainerDiv.className = 'section-table-container';
+                
+                // Create table
+                const table = document.createElement('table');
+                
+                // Create table header
+                const thead = document.createElement('thead');
+                thead.innerHTML = `
+                    <tr>
+                        <th>Year</th>
+                        <th>Admission Type</th>
+                        <th>Tuition Fee</th>
+                        <th>Management Fee</th>
+                        <th>Other Fees</th>
+                        <th>Total</th>
+                    </tr>
+                `;
+                
+                // Create table body
+                const tbody = document.createElement('tbody');
+                
+                // Sort items by admission year and type
+                items.sort((a, b) => {
+                    // First sort by admission year (1st, 2nd, 3rd)
+                    const yearA = a.admissionYear === '1st' ? 1 : a.admissionYear === '2nd' ? 2 : 3;
+                    const yearB = b.admissionYear === '1st' ? 1 : b.admissionYear === '2nd' ? 2 : 3;
+                    
+                    if (yearA !== yearB) {
+                        return yearA - yearB;
+                    }
+                    
+                    // Then sort by admission type (Regular, Lateral, SNQ)
+                    const typeOrder = { 'Regular': 1, 'Lateral': 2, 'SNQ': 3 };
+                    return typeOrder[a.admissionType] - typeOrder[b.admissionType];
+                });
+                
+                // Add rows
+                items.forEach(item => {
+                    const total = item.tuitionFee + item.managementFee + item.otherFees;
+                    
+                    const tr = document.createElement('tr');
+                    
+                    // Create table row with data-label attributes for mobile view
+                    tr.innerHTML = `
+                        <td data-label="Year">${item.admissionYear} Year</td>
+                        <td data-label="Admission Type">
+                            <span class="badge badge-${item.admissionType.toLowerCase()}">${item.admissionType}</span>
+                        </td>
+                        <td data-label="Tuition Fee" class="fee-cell">${formatCurrency(item.tuitionFee)}</td>
+                        <td data-label="Management Fee" class="fee-cell">${formatCurrency(item.managementFee)}</td>
+                        <td data-label="Other Fees" class="fee-cell">${formatCurrency(item.otherFees)}</td>
+                        <td data-label="Total" class="total-cell">${formatCurrency(total)}</td>
+                    `;
+                    
+                    tbody.appendChild(tr);
+                });
+                
+                // Assemble the table
+                table.appendChild(thead);
+                table.appendChild(tbody);
+                tableContainerDiv.appendChild(table);
+                
+                // Assemble the section
+                sectionDiv.appendChild(headerDiv);
+                sectionDiv.appendChild(tableContainerDiv);
+                
+                // Add to container
+                sectionsContainer.appendChild(sectionDiv);
+            });
+            
+            // Show the sections container
+            sectionsContainer.style.display = 'block';
+        }
+
+        // PDF Generation
+        function generatePDF() {
+            // Get current filter values for filename
+            const courseValue = getSelectedValue(courseRadios);
+            const admissionYearValue = getSelectedValue(yearRadios);
+            const admissionTypeValue = getSelectedValue(typeRadios);
+            
+            // Create PDF title based on current filters
+            let title = "SMP College Fee Structure 2025-26";
+            if (courseValue !== 'all') {
+                title += " - " + (courseValue === 'aided' ? "Aided Courses" : "Unaided Courses");
+            }
+            if (admissionYearValue !== 'all') {
+                title += " - " + admissionYearValue + " Year";
+            }
+            if (admissionTypeValue !== 'all') {
+                title += " - " + admissionTypeValue.charAt(0).toUpperCase() + admissionTypeValue.slice(1);
+            }
+            
+            // Initialize jsPDF
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Add title
+            doc.setFontSize(16);
+            doc.text(title, 14, 20);
+            
+            // Add generation date
+            doc.setFontSize(10);
+            doc.setTextColor(100, 100, 100);
+            const today = new Date();
+            doc.text("Generated on: " + today.toLocaleDateString(), 14, 28);
+            doc.setTextColor(0, 0, 0);
+            
+            // Get all visible sections
+            const sections = document.querySelectorAll('.course-section');
+            let currentY = 35;
+            
+            sections.forEach((section, index) => {
+                // Add section header
+                const headerText = section.querySelector('.section-header').textContent.split('entries')[0].trim();
+                
+                // Check if we need a new page
+                if (index > 0 && currentY > 240) { // Leave some space for the header
+                    doc.addPage();
+                    currentY = 20;
+                }
+                
+                // Add section title
+                doc.setFontSize(12);
+                doc.setTextColor(0, 0, 0);
+                doc.text(headerText, 14, currentY);
+                currentY += 8;
+                
+                // Get table rows from this section
+                const tableRows = [];
+                const rows = section.querySelectorAll('tbody tr');
+                
+                rows.forEach(row => {
+                    const rowData = [];
+                    row.querySelectorAll('td').forEach(cell => {
+                        // Strip HTML tags for PDF
+                        const text = cell.textContent.trim();
+                        rowData.push(text);
+                    });
+                    tableRows.push(rowData);
+                });
+                
+                // Table headers (without Course Type since it's in the section header)
+                const headers = ["Year", "Admission Type", "Tuition Fee", "Management Fee", "Other Fees", "Total"];
+                
+                // Generate table for this section
+                const table = doc.autoTable({
+                    head: [headers],
+                    body: tableRows,
+                    startY: currentY,
+                    theme: 'grid',
+                    styles: {
+                        fontSize: 9,
+                        cellPadding: 3
+                    },
+                    headStyles: {
+                        fillColor: [67, 97, 238],
+                        textColor: [255, 255, 255],
+                        fontStyle: 'bold'
+                    },
+                    alternateRowStyles: {
+                        fillColor: [245, 247, 250]
+                    }
+                });
+                
+                // Update current Y position for next section
+                currentY = table.lastAutoTable.finalY + 15;
+            });
+            
+            // Add watermark
+            doc.setFontSize(10);
+            doc.setTextColor(150, 150, 150);
+            doc.text("SMP College - By Teju", doc.internal.pageSize.getWidth() / 2, doc.internal.pageSize.getHeight() - 10, { align: 'center' });
+            
+            // Generate filename based on filters
+            let filename = "SMP_College_Fee_Structure_2025-26";
+            if (courseValue !== 'all') {
+                filename += "_" + courseValue;
+            }
+            if (admissionYearValue !== 'all') {
+                filename += "_" + admissionYearValue;
+            }
+            if (admissionTypeValue !== 'all') {
+                filename += "_" + admissionTypeValue;
+            }
+            filename += ".pdf";
+            
+            // Save PDF
+            doc.save(filename);
+        }
+    </script>
+</body>
+</html>
